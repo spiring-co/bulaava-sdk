@@ -1,6 +1,6 @@
 {
   "name": "bulaava-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SDK for Bulaava's API.",
   "main": "lib/index.js",
   "scripts": {
