@@ -1,0 +1,24 @@
+{
+  "name": "bulaava-sdk",
+  "version": "1.0.0",
+  "description": "SDK for Bulaava's API.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spiring-co/bulaava-sdk.git"
+  },
+  "keywords": [
+    "bulaava",
+    "sdk",
+    "invitations"
+  ],
+  "author": "spiring",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spiring-co/bulaava-sdk/issues"
+  },
+  "homepage": "https://github.com/spiring-co/bulaava-sdk#readme"
+}
