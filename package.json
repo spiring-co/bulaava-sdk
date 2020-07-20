@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/spiring-co/bulaava-sdk/issues"
   },
-  "homepage": "https://github.com/spiring-co/bulaava-sdk#readme"
+  "homepage": "https://github.com/spiring-co/bulaava-sdk#readme",
+  "dependencies": {
+    "bulaava-sdk": "https://github.com/spiring-co/bulaava-sdk"
+  }
 }
