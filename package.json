@@ -1,6 +1,6 @@
 {
   "name": "bulaava-sdk",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "SDK for Bulaava's API.",
   "main": "lib/index.js",
   "scripts": {
@@ -9,8 +9,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spiring-co/bulaava-sdk.git"
-  },
-  "keywords": [
+  },  "keywords": [
     "bulaava",
     "sdk",
     "invitations"
@@ -22,6 +21,6 @@
   },
   "homepage": "https://github.com/spiring-co/bulaava-sdk#readme",
   "dependencies": {
-    "buzzle-sdk": "https://github.com/spiring-co/buzzle-sdk.git"
+    "buzzle-sdk": "1.0.5"
   }
 }

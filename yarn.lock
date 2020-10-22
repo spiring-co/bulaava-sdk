@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.10.tgz#8c102aba13bf5253f35146affbf8b26275069bef"
   integrity sha512-yV1nWZPlMFpoXyoknm4S56y2nlTAuFYaJuQtYRAOU7xA/FJ9RY0Xm7QOkaYMMmr8ESdHIuUb6oQgR/0+2NqlyA==
 
+"@types/socket.io-client@^1.4.34":
+  version "1.4.34"
+  resolved "https://registry.yarnpkg.com/@types/socket.io-client/-/socket.io-client-1.4.34.tgz#8ca5f5732a9ad92b79aba71083cda5e5821e3ed9"
+  integrity sha512-Lzia5OTQFJZJ5R4HsEEldywiiqT9+W2rDbyHJiiTGqOcju89sCsQ8aUXDljY6Ls33wKZZGC0bfMhr/VpOyjtXg==
+
 after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
@@ -37,11 +42,13 @@ blob@0.0.5:
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
 
-"buzzle-sdk@https://github.com/spiring-co/buzzle-sdk.git":
-  version "1.0.2"
-  resolved "https://github.com/spiring-co/buzzle-sdk.git#3562e34431391ccfa16c230b1aee53c193a0a7fc"
+buzzle-sdk@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/buzzle-sdk/-/buzzle-sdk-1.0.3.tgz#d35824b4cfefc5f232372175e2dc7e724243f447"
+  integrity sha512-j9MEjEXZ1UxN2y8DuqzaztrxLS5y7bkPeFu6G574jiYpjcCHFXpIRLb+GNl4LgJhbtOKxFcwiAmo25CVyRhGtQ==
   dependencies:
     "@types/node" "^14.11.2"
+    "@types/socket.io-client" "^1.4.34"
     isomorphic-fetch "^2.2.1"
     socket.io-client "^2.3.0"
 
