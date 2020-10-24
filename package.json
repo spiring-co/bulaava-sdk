@@ -9,7 +9,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spiring-co/bulaava-sdk.git"
-  },  "keywords": [
+  },
+  "keywords": [
     "bulaava",
     "sdk",
     "invitations"
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/spiring-co/bulaava-sdk#readme",
   "dependencies": {
+    "bulaava-sdk": "^1.1.5",
     "buzzle-sdk": "1.0.5"
   }
 }

@@ -42,10 +42,17 @@ blob@0.0.5:
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
 
-buzzle-sdk@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/buzzle-sdk/-/buzzle-sdk-1.0.3.tgz#d35824b4cfefc5f232372175e2dc7e724243f447"
-  integrity sha512-j9MEjEXZ1UxN2y8DuqzaztrxLS5y7bkPeFu6G574jiYpjcCHFXpIRLb+GNl4LgJhbtOKxFcwiAmo25CVyRhGtQ==
+bulaava-sdk@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/bulaava-sdk/-/bulaava-sdk-1.1.5.tgz#76e5ebf68d222e75fb6965942fc477afefb410d1"
+  integrity sha512-yCeRRxJ5bb2+wjnhKw9x0qruv7L/2C22QbN0aWtki02viYKPzYdNA1bytTV1FY+8huZ/EezPXu73qk8k4NZpig==
+  dependencies:
+    buzzle-sdk "1.0.5"
+
+buzzle-sdk@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/buzzle-sdk/-/buzzle-sdk-1.0.5.tgz#12dc6f1c8f33d7107de61f6591f965b59f22b094"
+  integrity sha512-Edn0iTnuA0xUvSMpYstzr0o4zSKEvUMMk411AanRUgtH1H5nWWtjMQfd4J7pcJPCfxO/meG4BkOfheVKzgLXWA==
   dependencies:
     "@types/node" "^14.11.2"
     "@types/socket.io-client" "^1.4.34"
