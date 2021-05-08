@@ -1,4 +1,4 @@
-module.exports = (firestore: any, Buzzle: any) => {
+export default (firestore:any,Buzzle:any) => {
   const ref = firestore().collection('videoTemplates');
 
   const getArrayOfIdsAsQueryString = (field: any, ids: any) => {

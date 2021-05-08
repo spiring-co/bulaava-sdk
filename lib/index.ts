@@ -1,3 +1,3 @@
 const API = require("./api/index");
 
-module.exports = API;
+export default API;

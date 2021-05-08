@@ -1,4 +1,4 @@
-module.exports = (firestore: any) => {
+export default (firestore:any) => {
   try {
     const ref = firestore().collection('imageTemplates');
     return {

@@ -1,4 +1,4 @@
-module.exports = (firestore: any) => {
+export default (firestore:any) => {
   console.log("firestore:", firestore);
   const ref = firestore().collection("admins");
   return {

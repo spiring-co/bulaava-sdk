@@ -1,4 +1,4 @@
-module.exports = (firestore: any) => {
+export default (firestore:any) => {
   const ref = firestore().collection("categories");
 
   return {
