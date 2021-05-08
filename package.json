@@ -23,5 +23,8 @@
   "homepage": "https://github.com/spiring-co/bulaava-sdk#readme",
   "dependencies": {
     "buzzle-sdk": "1.0.5"
+  },
+  "devDependencies": {
+    "ts-migrate": "^0.1.19"
   }
 }
