@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'buzz... Remove this comment to see the full error message
 import BuzzleSdk from  "buzzle-sdk";
 const Admin = require("./admin");
 const Category = require("./category");
@@ -16,8 +17,8 @@ const ImageInvite = require("./imageInvite");
 const main = ({
   buzzleUrl = "http://buzzle-dev.herokuapp.com",
   firestore,
-  buzzleAuthToken = null,
-}) => {
+  buzzleAuthToken = null
+}: any) => {
   const Buzzle = BuzzleSdk.apiClient({
     baseUrl: buzzleUrl,
     authToken: buzzleAuthToken,

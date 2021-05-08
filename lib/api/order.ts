@@ -1,4 +1,4 @@
-module.exports = firestore => {
+module.exports = (firestore: any) => {
   const ref = firestore().collection('orders');
 
   return {
@@ -6,27 +6,36 @@ module.exports = firestore => {
       const snapshot = await ref.get();
       if (snapshot.isEmpty) return [];
 
-      return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      return snapshot.docs.map((d: any) => ({
+        id: d.id,
+        ...d.data()
+      }));
     },
 
-    getByUser: async userId => {
+    getByUser: async (userId: any) => {
       const snapshot = await ref.where('userId', '==', userId).get();
       if (snapshot.empty) return [];
 
-      const orders = snapshot.docs.map(d => ({
+      const orders = snapshot.docs.map((d: any) => ({
         id: d.id,
-        ...d.data(),
+        ...d.data()
       }));
 
       return orders;
     },
 
-    get: async id => {
+    get: async (id: any) => {
       const snapshot = await ref.doc(id).get();
       return { ...snapshot.data(), id };
     },
 
-    create: async ({ value, userId, productId, paymentGateway, paymentReference }) => {
+    create: async ({
+      value,
+      userId,
+      productId,
+      paymentGateway,
+      paymentReference
+    }: any) => {
       const snapshot = await ref.where('productId', '==', productId).get();
       if (!snapshot.empty) throw new Error('An order for this product already exists!');
 
@@ -42,8 +51,8 @@ module.exports = firestore => {
       return true;
     },
 
-    delete: async id => await ref.doc(id).delete(),
+    delete: async (id: any) => await ref.doc(id).delete(),
 
-    update: async (id, data) => await ref.doc(id).update(data),
+    update: async (id: any, data: any) => await ref.doc(id).update(data),
   };
 };

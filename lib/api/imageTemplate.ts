@@ -1,4 +1,4 @@
-module.exports = firestore => {
+module.exports = (firestore: any) => {
   try {
     const ref = firestore().collection('imageTemplates');
     return {
@@ -6,20 +6,23 @@ module.exports = firestore => {
         const snapshot = await ref.get();
         if (snapshot.isEmpty) return [];
 
-        return snapshot.docs.map(d => ({ ...d.data(), id: d.id })).filter(t => t.isAvailable)
+        return snapshot.docs.map((d: any) => ({
+          ...d.data(),
+          id: d.id
+        })).filter((t: any) => t.isAvailable);
         // .sort((a, b) => (a.ranking > b.ranking ? 0 : -1));;
       },
-      get: async id => {
+      get: async (id: any) => {
         const snapshot = await ref.doc(id).get();
         if (snapshot.isEmpty) return [];
 
-        return snapshot.docs.map(d => ({
+        return snapshot.docs.map((d: any) => ({
           id: d.id,
-          ...d.data(),
+          ...d.data()
         }));
       },
-      delete: async id => await ref.doc(id).delete(),
-      update: async (id, data) => {
+      delete: async (id: any) => await ref.doc(id).delete(),
+      update: async (id: any, data: any) => {
         const snap = ref.doc(id)
         if ((await snap.get()).exists) {
           await snap.update(data)
@@ -32,7 +35,7 @@ module.exports = firestore => {
           })
         }
       }
-    }
+    };
   } catch (err) {
     console.log(err);
   }

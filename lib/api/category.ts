@@ -1,4 +1,4 @@
-module.exports = (firestore) => {
+module.exports = (firestore: any) => {
   const ref = firestore().collection("categories");
 
   return {
@@ -7,19 +7,22 @@ module.exports = (firestore) => {
       if (snapshot.isEmpty) return [];
 
       return snapshot.docs
-        .map((d) => ({ id: d.id, ...d.data() }))
-        .sort((a, b) => (a.rank > b.rank ? 0 : -1));
+        .map((d: any) => ({
+        id: d.id,
+        ...d.data()
+      }))
+        .sort((a: any, b: any) => (a.rank > b.rank ? 0 : -1));
     },
 
-    get: async (id) => {
+    get: async (id: any) => {
       const snapshot = await ref.doc(id).get();
       return { ...snapshot.data(), id };
     },
 
-    create: async (data) => await ref.doc().set(data),
+    create: async (data: any) => await ref.doc().set(data),
 
-    delete: async (id) => await ref.doc(id).delete(),
+    delete: async (id: any) => await ref.doc(id).delete(),
 
-    update: async (id, data) => await ref.doc(id).update(data),
+    update: async (id: any, data: any) => await ref.doc(id).update(data),
   };
 };

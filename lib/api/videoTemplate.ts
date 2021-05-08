@@ -1,15 +1,15 @@
-module.exports = (firestore, Buzzle) => {
+module.exports = (firestore: any, Buzzle: any) => {
   const ref = firestore().collection('videoTemplates');
 
-  const getArrayOfIdsAsQueryString = (field, ids) => {
-    return ids.map((id, index) => `${index === 0 ? "" : "&"}${field}[]=${id}`).toString().replace(/,/g, "")
+  const getArrayOfIdsAsQueryString = (field: any, ids: any) => {
+    return ids.map((id: any, index: any) => `${index === 0 ? "" : "&"}${field}[]=${id}`).toString().replace(/,/g, "");
   }
-  const populateVideoTemplate = async vt => {
+  const populateVideoTemplate = async (vt: any) => {
     return { ...(await Buzzle.VideoTemplate.get(vt._templateId)), ...vt };
   };
 
   return {
-    getAll: async (showNotAvailable = false, categoryId, page = 0, size = 10) => {
+    getAll: async (showNotAvailable = false, categoryId: any, page = 0, size = 10) => {
       let snapshot;
       let count;
       if (categoryId) {
@@ -34,25 +34,42 @@ module.exports = (firestore, Buzzle) => {
       }
       if (snapshot.empty) return { data: [], page: page, count: 0 };
 
-      const videoTemplates = snapshot.docs.map(d => ({
+      const videoTemplates = snapshot.docs.map((d: any) => ({
         id: d.id,
-        ...d.data(),
+        ...d.data()
       }));
 
       const populatedTemplates = (await Buzzle.VideoTemplate.getAll(1, videoTemplates.length, getArrayOfIdsAsQueryString('id',
-        videoTemplates.map(({ _templateId }) => _templateId)))).data
+        videoTemplates.map(({
+          _templateId
+        }: any) => _templateId)))).data
       if (showNotAvailable) {
-        return { data: videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt })), page: page + 1, count }
+        return { data: videoTemplates.map((vt: any) => ({
+          ...populatedTemplates.find(({
+            id
+          }: any) => id === vt._templateId),
+
+          ...vt
+        })), page: page + 1, count };
       } else {
-        const data = videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt }))
-          .filter(({ isAvailable, _templateId }) => isAvailable)
+        const data = videoTemplates.map((vt: any) => ({
+          ...populatedTemplates.find(({
+            id
+          }: any) => id === vt._templateId),
+
+          ...vt
+        }))
+          .filter(({
+          isAvailable,
+          _templateId
+        }: any) => isAvailable)
         return {
           data, page: page + 1, count: count - (videoTemplates?.length - data.length)
         }
       }
 
     },
-    getRecommendations: async (showNotAvailable = false, categoryId, limitCount = false,
+    getRecommendations: async (showNotAvailable = false, categoryId: any, limitCount = false,
       excludedVideoTemplateId = false) => {
       let snapshot;
       if (categoryId) {
@@ -80,39 +97,73 @@ module.exports = (firestore, Buzzle) => {
 
       if (snapshot.empty) return [];
 
-      const videoTemplates = snapshot.docs.map(d => ({
+      const videoTemplates = snapshot.docs.map((d: any) => ({
         id: d.id,
-        ...d.data(),
+        ...d.data()
       }));
 
       const populatedTemplates = (await Buzzle.VideoTemplate.getAll(1, videoTemplates.length, getArrayOfIdsAsQueryString('id',
-        videoTemplates.map(({ _templateId }) => _templateId)))).data
+        videoTemplates.map(({
+          _templateId
+        }: any) => _templateId)))).data
       if (excludedVideoTemplateId) {
         if (showNotAvailable) {
-          return videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt }))
-            .filter(({ _templateId }) => _templateId !== excludedVideoTemplateId)
+          return videoTemplates.map((vt: any) => ({
+            ...populatedTemplates.find(({
+              id
+            }: any) => id === vt._templateId),
+
+            ...vt
+          }))
+            .filter(({
+            _templateId
+          }: any) => _templateId !== excludedVideoTemplateId);
         } else {
-          return videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt }))
-            .filter(({ isAvailable, _templateId }) => isAvailable && _templateId !== excludedVideoTemplateId)
+          return videoTemplates.map((vt: any) => ({
+            ...populatedTemplates.find(({
+              id
+            }: any) => id === vt._templateId),
+
+            ...vt
+          }))
+            .filter(({
+            isAvailable,
+            _templateId
+          }: any) => isAvailable && _templateId !== excludedVideoTemplateId);
         }
       } else {
         if (showNotAvailable) {
-          return videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt }))
+          return videoTemplates.map((vt: any) => ({
+            ...populatedTemplates.find(({
+              id
+            }: any) => id === vt._templateId),
+
+            ...vt
+          }));
         } else {
-          return videoTemplates.map(vt => ({ ...populatedTemplates.find(({ id }) => id === vt._templateId), ...vt }))
-            .filter(({ isAvailable, _templateId }) => isAvailable)
+          return videoTemplates.map((vt: any) => ({
+            ...populatedTemplates.find(({
+              id
+            }: any) => id === vt._templateId),
+
+            ...vt
+          }))
+            .filter(({
+            isAvailable,
+            _templateId
+          }: any) => isAvailable);
         }
       }
     },
 
-    get: async id => {
+    get: async (id: any) => {
       const snapshot = await ref.doc(id).get();
       const videoTemplate = { ...snapshot.data(), id };
 
       return populateVideoTemplate(videoTemplate);
     },
 
-    create: async data => {
+    create: async (data: any) => {
       const id = Math.random()
         .toString()
         .slice(2, 15);
@@ -120,9 +171,9 @@ module.exports = (firestore, Buzzle) => {
       return id;
     },
 
-    delete: async id => await ref.doc(id).delete(),
+    delete: async (id: any) => await ref.doc(id).delete(),
 
-    update: async (id, data) => await ref.doc(id).update(data),
+    update: async (id: any, data: any) => await ref.doc(id).update(data),
   };
 };
 

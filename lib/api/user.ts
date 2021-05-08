@@ -1,15 +1,15 @@
-module.exports = (firestore) => {
+module.exports = (firestore: any) => {
   const ref = firestore().collection("users");
   return {
-    get: async (id) => {
+    get: async (id: any) => {
       const snapshot = await ref.doc(id).get();
       return { ...snapshot.data(), id };
     },
 
-    create: async (data) => await ref.doc().set(data),
+    create: async (data: any) => await ref.doc().set(data),
 
-    delete: async (id) => await ref.doc(id).delete(),
+    delete: async (id: any) => await ref.doc(id).delete(),
 
-    update: async (id, data) => await ref.doc(id).update(data),
+    update: async (id: any, data: any) => await ref.doc(id).update(data),
   };
 };
